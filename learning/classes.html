@@ -1,0 +1,36 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+        <script>
+            class Human {
+                constructor() {
+                    this.gender = 'male';
+                }
+                printGender() {
+                    console.log(this.gender);
+                }
+            }
+            class Person extends Human {
+                constructor() {
+                    super();
+                    this.name = 'william';
+                }
+                printMyName() {
+                    console.log(this.name);
+                }
+            
+            }
+            const person = new Person();
+            person.printMyName();
+            person.printGender();
+        </script>
+  </head>
+
+  <body>
+      <h1>React Project</h1>
+      <p>hello world</p>
+  </body>
+</html>
