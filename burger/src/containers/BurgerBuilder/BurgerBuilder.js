@@ -28,8 +28,8 @@ class BurgerBuilder extends Component {
   }
 
   componentDidMount () {
-
-    console.log("did mount")
+    console.log(this.props);
+    console.log("did mount");
     axios.get('https://will-home-projects.firebaseio.com/ingredients.json')
       .then(response => {
         this.setState({ingredients: response.data})
@@ -91,6 +91,7 @@ class BurgerBuilder extends Component {
     }
 
     purchaseContinueHandler = () => {
+      /*
       this.setState({loading: true});
       const order = {
         ingredients: this.state.ingredients,
@@ -115,6 +116,17 @@ class BurgerBuilder extends Component {
           this.setState({loading: false, purchasing: false});
           console.log(error)
         });
+      */
+     const quertParams = [];
+     for ( let i in this.state.ingredients) {
+      quertParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]));
+     }
+     const queryString = quertParams.join('&');
+     console.log(queryString);
+     this.props.history.push({
+       pathname: '/checkout',
+       search: '?' + queryString,
+     });
     }
 
     render() {
